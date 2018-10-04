@@ -14,7 +14,7 @@
     <!-- This is our header and App Title -->
   <div class="jumbotron">
         <h1 class="display-4">The Weekender</h1>
-        <p class="lead">This app is a weekend party planning app</p>
+        <p class="lead">"It's the freakin' weekend, baby I'm about to have me some fun"</p>
         <hr class="my-4">
     </div>
 
@@ -24,41 +24,38 @@
         <div class="col-lg-12">
             <div class="card card-default">
                 <div class="card-header">
-                    Current Flights
+                    Don't worry we got you covered, once you search we will display some ideas here:
                 </div>
                 <div class="card-body" id="flight-status">
-                    <h2 id="city-input"></h2>
-                    <h4 id="state-input"></h4>
-                    <h4 id="keyword-input"></h4>
+                    <h2 id="zipcode-input"></h2>
+                    <h4 id="find-input"></h4>
                     <h4 id="date-input"></h4>
+                    <h4 id="weather-info"></h4>
+                    <!-- <h4 id="date-input"></h4> -->
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Form (note the various input "types")-->
-      
+    <p>Relax, we know you are bored, let us help you have fun...</p>
     <div class="row">
         <div class="col-lg-12">
         <form role="form">
             <div class="form-group row">
-                <label for="city-input">City:</label>
-                <input class="form-control" id="city-input" type="text">
+                <label for="zipcode-input">Search Zipcode (We will search a radius from that zipcode for you):</label>
+                <input class="form-control" id="zipcode-input" type="text">
             </div>
             <div class="form-group row">
-                <label for="state-input">Keyword:</label>
-                <input class="form-control" id="state-input" type="text">
-            </div>
-            <div class="form-group row">
-                <label for="keyword-input">State:</label>
-                <input class="form-control" id="keyword-input" type="text">
+                <label for="find-input">Find (Event, Title, keyword):</label>
+                <input class="form-control" id="find-input" type="text">
             </div>
             <div class="form-group row">
                 <label for="date-input">Date:</label>
                 <input class="form-control" id="date-input" type="date">
             </div>
             
-            <button class="btn btn-primary" id="add-flight" type="submit">Submit</button>
+            <button class="btn btn-primary" id="search-event" type="submit">Submit</button>
         </form>
     </div>
 </div>
@@ -74,6 +71,8 @@
     </footer>
 </body>
 
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+<script src="/assets/application/event.js"></script>
+<script src="/assets/application/weather.js"></script>
 
-<script src="./assets/javascript/app.js"></script>
 </html>
