@@ -12,28 +12,45 @@ firebase.initializeApp(config);
 // Create a variable to reference the database
 var database = firebase.database();
 
-
-
 // Capture Button Click
 $("#search-event").on("click", function (event) {
+    // Trying to remove the search again button after hitting it and display a reset button
+    // $( "#search-event" ).remove();   
+    // $( "#searchweekend" ).addclass();
+    // $("#results").removeclass();   
+    
     // Don't refresh the page!
     event.preventDefault();
 
-    // // Note remember to create these same variables in Firebase!
-    // var zipcode = "";
-    // var date = "";
-    
     // Get inputs
     var zipcode = $("#zipcode-input").val().trim();
     var date = $("#date-input").val().trim();
+    var data = "";
 
+    // should get the data from the weather app
+    function displayWeatherInfo() {
+        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?zip=" + zipcode + ",us&APPID=8e5065f407a7e54ac928dfac8cbe0bfd"
+
+        console.log(queryURL)
+
+        $.ajax({
+            url: queryURL,
+            crossDomain: true,
+            method: "GET"
+        }).then(function (response) {
+            data = response.list.main_temp;
+            console.log(data);
+        })
+    };
     // Code in the logic for storing and retrieving the most recent user.
     database.ref().push({
 
         zipcode: zipcode,
         date: date,
+        data: data,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
+    displayWeatherInfo();
 });
 // Firebase is always watching for changes to the data.
 // When changes occurs it will print them to console and html
@@ -45,10 +62,12 @@ database.ref().on("child_added", function (snapshot) {
     // Log the value of the various properties
     console.log(snapshot.val().zipcode);
     console.log(snapshot.val().date);
+    console.log(snapshot.val().data);
 
     // Change the HTML  // fix this//
     $("#zipcode-input").append(snapshot.val().zipcode);
     $("#date-input").append(snapshot.val().date);
+    $("#openweathermap-data").append(snapshot.val().data);
 
     // Handle the errors
 }, function (errorObject) {
@@ -57,35 +76,3 @@ database.ref().on("child_added", function (snapshot) {
 // dataRef.ref().orderByChild("dataAdded").limitToLast(1).on('child_added", function(snapshot)
 
 //  this is where we pull the data from the api app
-
-
-
-function displayweatherInfo() {
-    var info = $(this).attr("weather-info");
-    var queryURL =
-      "api.openweathermap.org/data/2.5/forecast?zip=" + zipcode + ",us";
-
-      $.ajax({
-      url: queryURL,
-      crossDomain: true,
-      method: "GET"
-    }).then(function(response) {
-      // Saving the data property
-      var weather = response.list.;
-      console.log(response);
-
-
-      <div id="openweathermap-widget-11"></div>
-      <script src='//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
-      <script>
-      window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  
-      window.myWidgetParam.push({
-          id: 11,cityid: '4684888',appid: '8e5065f407a7e54ac928dfac8cbe0bfd',units: 'metric',containerid: 'openweathermap-widget-11',  
-        });  
-      (function() {
-          var script = document.createElement('script');
-          script.async = true;script.charset = "utf-8";
-          script.src = 
-      "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
-      var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();
-      </script>
