@@ -14,6 +14,11 @@ var database = firebase.database();
 
 // Capture Button Click
 $("#search-event").on("click", function (event) {
+    // Trying to remove the search again button after hitting it and display a reset button
+    // $( "#search-event" ).remove();   
+    // $( "#searchweekend" ).addclass();
+    // $("#results").removeclass();   
+    
     // Don't refresh the page!
     event.preventDefault();
 
@@ -24,8 +29,8 @@ $("#search-event").on("click", function (event) {
 
     // should get the data from the weather app
     function displayWeatherInfo() {
-        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?zip=" + zipcode + ",us&APPID=8e5065f407a7e54ac928dfac8cbe0bfd"  
-                                     
+        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?zip=" + zipcode + ",us&APPID=8e5065f407a7e54ac928dfac8cbe0bfd"
+
         console.log(queryURL)
 
         $.ajax({
@@ -33,10 +38,10 @@ $("#search-event").on("click", function (event) {
             crossDomain: true,
             method: "GET"
         }).then(function (response) {
-                data = response.list.main_temp;
-                console.log(data);
-        }
-        )};
+            data = response.list.main_temp;
+            console.log(data);
+        })
+    };
     // Code in the logic for storing and retrieving the most recent user.
     database.ref().push({
 
@@ -44,7 +49,7 @@ $("#search-event").on("click", function (event) {
         date: date,
         data: data,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
-    }); 
+    });
     displayWeatherInfo();
 });
 // Firebase is always watching for changes to the data.
