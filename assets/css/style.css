@@ -3,7 +3,7 @@ body {
     font-size: 18px;
     line-height: 34px;
     color:black !important;
-    background-image: url("/Users/jbautista/Code/API-Project-1/assets/images/acs-website-background-building-e1472862899804.jpg") !important;
+    background-image: url("../images/acs-website-background-building-e1472862899804.jpg");
     background-repeat:no-repeat;
     height: auto;
     width: auto;

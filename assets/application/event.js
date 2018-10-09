@@ -1,3 +1,5 @@
+var eventfuls;
+
 var config = {
   apiKey: "AIzaSyAno_Lj1JInIRz89IGUAMYqaElUD-zKBIE",
   authDomain: "api-project-1-1538239416627.firebaseapp.com",
@@ -17,7 +19,7 @@ firebase.initializeApp(config);
     var eventDate = $("#date-input").val().trim();
     var eventZip = $("#zipcode-input").val().trim();
 
-    console.log(eventFind);
+    
 
 //pushes data to firebase
     var newEvent = {
@@ -28,25 +30,13 @@ firebase.initializeApp(config);
 
   database.ref().push(newEvent);
 
-  console.log(newEvent.keyword);
-  console.log(newEvent.date);
-  console.log(newEvent.zipcode);
+  // console.log(newEvent.keyword);
+  // console.log(newEvent.date);
+  // console.log(newEvent.zipcode);
 
-  function displayeventInfo() {
-    var queryURL ="http://api.eventful.com/rest/events/search?...&keywords=books&location=San+Diego&date=Future";
-     
-      $.ajax({
-      url: queryURL,
-      crossDomain: true,
-      method: "GET"
-    }).then(function(response) {
-      var eventfuls = response.events.title;
-      console.log(eventfuls);
+  
 
-    }
-    )};
 
-displayeventInfo();
   
 });
 
@@ -54,16 +44,35 @@ displayeventInfo();
 
 database.ref().on("child_added", function( childSnapshot, prevChildKey){
 
-console.log(childSnapshot.val());
+// console.log(childSnapshot.val());
 
 var eventFind = childSnapshot.val().keyword;
 var eventDate = childSnapshot.val().date;
 var eventZip = childSnapshot.val().zipcode;
 
-console.log(eventFind);
-console.log(eventDate);
-console.log(eventZip);
+// console.log(eventFind);
+// console.log(eventDate);
+// console.log(eventZip);
 
 })
+
+  var queryURL ="https://api.eventful.com/json/events/search?app_key=HHnGr5bXXXFGjzZW&keywords=books&location=San+Diego&date=Future";
+  
+    $.ajax({
+    url: queryURL,
+    crossDomain: true,
+    headers: {'Access-Control-Allow-Origin': 'file:///C:/Users/brian/code/API-Project-1/index.html?'},
+    method: "GET"
+  }).then(function(response) {
+    console.log(response, 'response');
+   eventfuls = response;
+    
+   console.log(eventfuls);
+  }
+  );
+
+
+
+console.log(eventfuls);
 
 
