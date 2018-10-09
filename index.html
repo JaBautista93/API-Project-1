@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"> </script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js"></script>
+    <!-- <script src="//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js"></script> -->
     <title>The Weekender</title>
 </head>
 
@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="col-lg-12 card card-default">
-            <div class="card-body" id="weather-status">
+            <div class="card-body" id="event-status">
                 <h4 id="event-data"></h4>
             </div>
         </div>
@@ -83,18 +83,42 @@
         <div id="searchweekend" class="row">
             <div class="col-lg-12 ">
                 <form role="form">
+                    <!-- This is the HTML for the Search Zipcode Field -->
                     <div class="form-group row">
-                        <label for="zipcode-input">Search Zipcode (We will search a radius from that zipcode for
+                        <label for="validationCustom05 zipcode-input">Search Zipcode (We will search a radius from that
+                            zipcode for
                             you):</label>
-                        <input class="form-control" id="zipcode-input" type="text">
+                        <input type="number" class="form-control" id="validationCustom05 zipcode-input" placeholder="Zip"
+                            required>
+                        <div class="invalid-feedback form-control">
+                            Please provide a valid zip.
+                        </div>
                     </div>
+                    <!-- This is the HTML for the Search Event Field -->
                     <div class="form-group row">
-                        <label for="find-input">Find (Event, Title, keyword):</label>
-                        <input class="form-control" id="find-input" type="text">
+                        <label for="validationCustom05 zipcode-input">Find (Event, Title, keyword):</label>
+                        <input type="text" class="form-control" id="validationCustom05 find-input" placeholder="Search Event"
+                            required>
+                        <div class="invalid-feedback form-control">
+                            Please provide a valid search criteria.
+                        </div>
                     </div>
+                    <!-- THis is the HTML for the Date Search Field -->
                     <div class="form-group row">
-                        <label for="date-input">Date:</label>
-                        <input class="form-control" id="date-input" type="date">
+                        <label for="validationCustom05 date-input">Date:</label>
+                        <input type="date" class="form-control" id="validationCustom05 zipcode-input" placeholder="Date"
+                            required>
+                        <div class="invalid-feedback form-control">
+                            Please provide a valid date.
+                        </div>
+                    </div>
+
+                    <!-- This is a user warning since we are using the free version of Weather API -->
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Weather Info Warning!</strong> Data only availble up to 16 days from the current date.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
 
                     <div class="row">
@@ -120,9 +144,11 @@
         </div>
     </footer>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
 <script src="assets/application/event.js"></script>
 <script src="assets/application/weather.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 </html>
