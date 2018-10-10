@@ -19,31 +19,18 @@ firebase.initializeApp(config);
 
 //sets variables  to user input 
      eventFind = $("#find-input").val().trim();
-     eventDate = $("#date-input").val().trim();
+    //  eventDate = $("#date-input").val().trim();
      eventZip = $("#zipcode-input").val().trim();
-     console.log(eventZip);
 
     
 
 //pushes data to firebase
-  //   var newEvent = {
-  //       keyword: eventFind,
-  //       date: eventDate,
-  //       zipcode: eventZip
-  //   };
-
-  // database.ref().push(newEvent);
-
-  // console.log(newEvent.keyword);
-  // console.log(newEvent.date);
-  // console.log(newEvent.zipcode);
 database.ref().set({
   keyword: eventFind,
   zipcode: eventZip
 });
   
 
-console.log(eventZip);
 
 database.ref().on("value", function(snapshot){
 
@@ -57,19 +44,34 @@ var oArgs = {
  app_key: "HHnGr5bXXXFGjzZW",
  location: eventZip,
  q: eventFind,
- "date": "Future",
+//  "date": "Future",
  "include": "tags,categories",
  page_size: 5,
  sort_order: "popularity",
 };
 EVDB.API.call("/events/search", oArgs, function(oData) {
  console.log(oData);
- console.log(oData.events.event[0].image);
- var picURL = oData.events.event[0].image.medium.url;
- var picTure = $("<img>").attr("src", picURL);
- var titleURL = oData.events.event[0].title;
-$("#event-data").append(picTure);
-$("#event-data").append(titleURL);
+ 
+ for (var i=0; i < 3; i++){
+
+  var picURL = oData.events.event[i].image.medium.url;
+  var venURL = oData.events.event[i].venue_url
+  var picTure = $("<img>").attr("src", picURL).wrap("<a href='"+venURL+"'></a>");
+  var titleURL = oData.events.event[i].title;
+  var newCol = $("<div>").attr("class", "col-lg-3 linked");
+  var newRow = $("<div>").attr("class", "row");
+$("#event-data").append(newCol);
+$(newCol).append(newRow);
+ $(newRow).append(picTure);
+ $(newCol).append(newRow);
+ $(newRow).append(titleURL);
+ $(newCol).append(newRow);
+ $(newRow).append(" Venue Link For Tickets Here");
+
+  
+ }
+
+
  });
   
 });
