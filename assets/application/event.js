@@ -56,17 +56,18 @@ EVDB.API.call("/events/search", oArgs, function(oData) {
 
   var picURL = oData.events.event[i].image.medium.url;
   var venURL = oData.events.event[i].venue_url
-  var picTure = $("<img>").attr("src", picURL).wrap("<a href='"+venURL+"'></a>");
+  console.log(venURL);
+  var picTure = $("<img>").attr("src", picURL);
   var titleURL = oData.events.event[i].title;
   var newCol = $("<div>").attr("class", "col-lg-3 linked");
-  var newRow = $("<div>").attr("class", "row");
+  var newRow = $("<a>").attr("class", "row");
 $("#event-data").append(newCol);
 $(newCol).append(newRow);
  $(newRow).append(picTure);
  $(newCol).append(newRow);
  $(newRow).append(titleURL);
  $(newCol).append(newRow);
- $(newRow).append(" Venue Link For Tickets Here");
+ $(newRow).append(" Venue Link For Tickets Here").attr("href", `${venURL}`);
 
   
  }
