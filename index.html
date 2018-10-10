@@ -9,10 +9,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-<<<<<<< HEAD
-=======
     <script type="text/javascript" src="http://api.eventful.com/js/api"></script>
->>>>>>> master
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- <script src="//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js"></script> -->
     <title>The Weekender</title>
@@ -49,8 +46,8 @@
             </div>
         </nav>
     </div>
+    
     <!-- This is where we can push our javascript to display on the page we need to create elements -->
-
     <div class="container">
         <div class="card-header">
             Weekend results will appear here:
@@ -58,26 +55,23 @@
         <div class="row">
             <div class="col-lg-6 card card-default">
                 <div class="card-body" id="user-status">
-                    <h4 id="zipcode-output"></h4>
-                    <h4 id="find-output"></h4>
-                    <h4 id="date-output"></h4>
+                    <div id="zipcode-output"></div>
+                    <div id="find-output"></div>
+                    <div id="date-output"></div>
                 </div>
             </div>
 
             <div class="col-lg-6 card card-default">
                 <div class="card-body" id="weather-status">
-                    <h4 id="openweathermap-data"></h4>
+                    <div id="openweathermap-data"></div>
                 </div>
             </div>
         </div>
         <div class="col-lg-12 card card-default">
-<<<<<<< HEAD
             <div class="card-body" id="event-status">
-                <h4 id="event-data"></h4>
-=======
+                <div id="event-data"></div>
             <div class="card-body" id="weather-status">
                 <div id="event-data"></div>
->>>>>>> master
             </div>
         </div>
 
@@ -94,9 +88,8 @@
                 <form role="form">
                     <!-- This is the HTML for the Search Zipcode Field -->
                     <div class="form-group row">
-                        <label for="validationCustom05 zipcode-input">Search Zipcode (We will search a radius from that
-                            zipcode for
-                            you):</label>
+                        <label for="validationCustom05">Search Zipcode (We will search a radius from that
+                            zipcode for you):</label>
                         <input type="number" class="form-control" id="validationCustom05 zipcode-input" placeholder="Zip"
                             required>
                         <div class="invalid-feedback form-control">
@@ -105,7 +98,7 @@
                     </div>
                     <!-- This is the HTML for the Search Event Field -->
                     <div class="form-group row">
-                        <label for="validationCustom05 zipcode-input">Find (Event, Title, keyword):</label>
+                        <label for="validationCustom05">Find (Event, Title, keyword):</label>
                         <input type="text" class="form-control" id="validationCustom05 find-input" placeholder="Search Event"
                             required>
                         <div class="invalid-feedback form-control">
@@ -115,13 +108,12 @@
                     <!-- THis is the HTML for the Date Search Field -->
                     <div class="form-group row">
                         <label for="validationCustom05 date-input">Date:</label>
-                        <input type="date" class="form-control" id="validationCustom05 zipcode-input" placeholder="Date"
+                        <input type="date" class="form-control" id="validationCustom05 date-input" placeholder="Date"
                             required>
                         <div class="invalid-feedback form-control">
                             Please provide a valid date.
                         </div>
                     </div>
-
                     <!-- This is a user warning since we are using the free version of Weather API -->
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <strong>Weather Info Warning!</strong> Data only availble up to 16 days from the current date.
@@ -160,4 +152,5 @@
 <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
 <script src="assets/application/event.js"></script>
 <script src="assets/application/weather.js"></script>
+<script src="assets/application/app.js"></script>
 </html>
