@@ -73,7 +73,27 @@ $(newCol).append(newRow);
 
 
  });
-  
+
+ 
+var weatherURL = "https://api.openweathermap.org/data/2.5/forecast?zip=" + eventZip + ",us&APPID=8e5065f407a7e54ac928dfac8cbe0bfd";
+
+        console.log(weatherURL);
+
+        $.ajax({
+            url: weatherURL,
+            crossDomain: true,
+            method: "GET"
+        }).then(function (response) {
+           var data = response.list[0].main.temp;
+           var skies = response.list[0].weather[0].description;
+           actTemp = Math.floor(((data - 273.15) * 1.8) + 32);
+            console.log(actTemp);
+            console.log(skies);
+            var eventWeather = $("<div>").html("It is " + actTemp + " degrees outside. And it looks like "+ skies + ". Choose accodingly!");
+  $("#weather-status").append(eventWeather);
+        })
+
+        
 });
 
 
