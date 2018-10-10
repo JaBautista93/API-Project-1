@@ -43,7 +43,7 @@ firebase.initializeApp(config);
 
 var oArgs = {
   app_key: "HHnGr5bXXXFGjzZW",
-  location: "San Diego",
+  location: "dallas",
   // q: eventfind,
   "date": "Future",
   "include": "tags,categories",
